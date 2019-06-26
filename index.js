@@ -1,22 +1,32 @@
 
 
-//factory function
 function createCircle(radius){
-return{
+ return {
     radius,
     draw: function(){
         console.log('draw');
     }
-};
+};   
 }
 const circle = createCircle(1);
+circle.draw();
 
-// Constructor function
-const Circle1 = new Function('radius',`
+// Constructor Function
+
+function Circle(radius){
+    this.radius = radius;
+    this.draw = function(){
+        console.log("draw");
+    }
+}
+
+const another = new Circle(1);
+
+const Circle1 = new Function('radius', `
 this.radius = radius;
 this.draw = function(){
-        console.log('draw');
+    console.log("draw");
 }
 `);
-const orange = new Circle1(1);
-const another = new Circle1(1);
+
+const orange = new Circle(1);
